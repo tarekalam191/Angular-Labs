@@ -1,0 +1,24 @@
+
+      <div class="card productCard " height:600px>
+        <img [src]="allProducts.images[0]" alt="product-img" class="productImage">
+        @if(allProducts.stock>0) {
+          <span class="badge text-bg-success badg"> In stock</span>
+          } @else{
+          <span class="badge text-bg-danger badg">out of stock</span>
+
+          }
+        <div class="card-body">
+          <div class="d-flex justify-content-between text-center">
+            <p class="px-3">{{ allProducts.title }}</p>
+            <div class="productPrice px-3">${{ allProducts.price }}</div>
+          </div>
+          <div class="text-center">
+
+            <a  class="text-primary nav-link link-opacity-50-hover" routerLink="['/details',id]">{{ allProducts.description.length > 50 ? allProducts.description.substring(0, 50) + '...' : allProducts.description }}</a>
+          </div>
+          <div class="d-flex justify-content-center mt-3">
+            <button routerLink="carte"(click)="addToCart(allProducts)" class="btn btn-success rounded-60 mx-2" >Add to Cart</button>
+            <button (click)="getID(allProducts.id)" class="btn btn-primary rounded-60" href="#">view</button>
+          </div>
+        </div>
+      </div>

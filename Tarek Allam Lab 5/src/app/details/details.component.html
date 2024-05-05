@@ -1,0 +1,15 @@
+<div class="container">
+<div class="row">
+  <div class="col-6">
+    <img style="width: 100%;" [src]="productDetails.images[0]" alt="">
+  </div>
+<div class="col-6">
+      <h1>  {{ productDetails.title }}</h1>
+      <hr>
+    <p>{{ productDetails.description}}</p>
+    <P>{{ productDetails.category}}</P>
+<button (click)="pushInProduct()" class="btn btn-primary" >Add to cart</button>
+</div>
+</div>
+
+</div>

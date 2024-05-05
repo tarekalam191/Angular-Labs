@@ -1,0 +1,139 @@
+
+<div class="container-fluid d-flex justify-content-center align-items-center vh-100">
+  <div class="col-6">
+    <div class="container">
+      <h2>Registration Form</h2>
+      <form>
+        <form [formGroup]="signUpForm" (ngSubmit)="handleSubmit()">
+          <div class="form-group">
+            <label for="userName">User Name</label>
+            <input
+            type="text"
+            class="form-control"
+             id="userName"
+             formControlName="userName"
+            >
+            @if(signUpForm.controls['userName']&&signUpForm.controls['userName'].touched){
+              @if(signUpForm.controls['userName'].errors?.['required']){
+                <div id="emailHelp " class="form-text">
+                  <span class="text-danger">The userName is required</span>
+                </div>
+              }
+
+              @if(signUpForm.controls['userName'].errors?.['minlength']){
+                <div id="emailHelp " class="form-text">
+                  <span class="text-danger">The min length of the userName 3 char</span>
+                </div>
+              }
+
+              }
+          </div>
+          <p class="text-danger"></p>
+          <div class="form-group">
+            <label for="email">Email address</label>
+            <input
+            type="email"
+             class="form-control"
+             id="email"
+             name="email"
+            formControlName="email"
+             >
+
+          </div>
+          @if(signUpForm.controls['email'].invalid&&signUpForm.controls['email'].touched){
+            <div id="emailHelp">
+              @if(signUpForm.controls['email'].errors?.['required']){
+                <span class="text-danger">The email is required</span>
+
+              }
+              @if(signUpForm.controls['email'].errors?.['pattern']){
+                <span class="text-danger">The email is invalid</span>
+
+              }
+          </div>
+          }
+
+          <div class="form-group">
+            <label for="password">Password:</label>
+            <div class="input-group">
+              <input
+              type="password"
+               class="form-control"
+               id="password"
+               name="password"
+               formControlName="password"
+
+               >
+
+              <div class="input-group-append">
+                <button type="button" class="btn btn-outline-secondary">Show</button>
+              </div>
+            </div>
+            <p class="text-danger"></p>
+          </div>
+          @if(signUpForm.controls['password']&&signUpForm.controls['password'].touched){
+            @if(signUpForm.controls['password'].errors?.['required']){
+              <div id="emailHelp " class="form-text">
+                <span class="text-danger">The password is required</span>
+              </div>
+            }
+
+            @if(signUpForm.controls['password'].errors?.['minlength']){
+              <div id="emailHelp " class="form-text">
+                <span class="text-danger">The min length of the password 8 char</span>
+              </div>
+            }
+            @if(signUpForm.controls['password'].errors?.['pattern']){
+              <div id="emailHelp " class="form-text">
+                <span class="text-danger">contains at least one
+                  lowercase , one uppercase , at least one digit
+                  and special character [ example : *&%$# ] ]</span>
+              </div>
+            }
+          }
+          <div class="form-group">
+            <label for="name">Name:</label>
+            <input
+            type="text"
+            class="form-control"
+            id="name"
+            name="name"
+            formControlName="name"
+
+            >
+            @if(signUpForm.controls['name']&&signUpForm.controls['name'].touched){
+              @if(signUpForm.controls['name'].errors?.['required']){
+                <div id="emailHelp " class="form-text">
+                  <span class="text-danger">The name is required</span>
+                </div>
+              }
+
+              @if(signUpForm.controls['name'].errors?.['minlength']){
+                <div id="emailHelp " class="form-text">
+                  <span class="text-danger">The min length of the name 3 char</span>
+                </div>
+              }
+
+              }
+          </div>
+          <p class="text-danger"></p>
+          <div class="form-group">
+            <label for="confirmPassword">Confirm Password:</label>
+            <input type="password" class="form-control" id="confirmPassword" name="confirmPassword  " formControlName="confirmPassword">
+          </div>
+          @if(signUpForm.controls['confirmPassword']&&signUpForm.controls['confirmPassword'].touched){
+            @if(signUpForm.controls['confirmPassword'].errors?.['required']){
+              <div id="emailHelp " class="form-text">
+                <span class="text-danger">The confirmPassword is required</span>
+              </div>
+            }
+
+
+
+            }
+          <p class="text-danger"></p>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,81 @@
+<div class="d-flex vh-100 justify-content-center align-content-center flex-wrap">
+  <form  #formRef="ngForm" (ngSubmit)="formValueChanged(formRef)" class="col-6 form-group">
+      <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">
+              Email address
+          </label>
+          <input
+              type="email"
+
+              name="email"
+              for="exampleInputEmail1"
+              class="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+              required
+              pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+
+              [(ngModel)]="inputs.email"
+              #email="ngModel"
+          />
+          @if(email.invalid&&email.touched){
+            @if(email.errors?.['required']){
+              <div id="emailHelp " class="form-text">
+                <span class="text-danger">The email is required</span>
+              </div>
+            }
+            @if( email.errors?.['pattern']){
+              <div id="emailHelp " class="form-text">
+                <span class="text-danger">pleas enter valid email</span>
+              </div>
+            }
+
+          }
+        </div>
+
+
+      <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">
+              Password
+          </label>
+          <input
+              type="password"
+              name="Password"
+              value=""
+              onchange=""
+              class="form-control"
+              id="exampleInputPassword1"
+              required
+              minlength="3"
+              [(ngModel)]="inputs.password"
+              #password="ngModel"
+          />
+      </div>
+ @if(password.invalid&&password.touched){
+        @if(password.errors?.['required']){
+          <div id="emailHelp " class="form-text">
+            <span class="text-danger">The password is required</span>
+          </div>
+        }
+
+        @if( password.errors?.['minlength']){
+          <div id="emailHelp " class="form-text">
+            <span class="text-danger">Min length is 3 char</span>
+          </div>
+        }
+      }
+      <div class="mb-3 form-check">
+          <input
+              type="checkbox"
+              class="form-check-input"
+              id="exampleCheck1"
+          />
+          <label class="form-check-label" for="exampleCheck1">
+              Check me out
+          </label>
+      </div>
+      <button  type="submit" class="btn btn-primary" [disabled]="formRef.invalid">
+          Submit
+      </button>
+  </form>
+</div>
