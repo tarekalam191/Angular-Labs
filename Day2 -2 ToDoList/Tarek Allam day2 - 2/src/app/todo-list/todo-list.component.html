@@ -1,0 +1,7 @@
+<div class="d-flex justify-content-around align-items-baseline col-4 mt-3">
+<span class="mx-2" [ngClass]="TodoTask.status ? 'text-decoration-line-through':'' ">{{TodoTask.task}}</span>
+<button class="btn btn-primary" (click)="ChangeStatus(TodoTask.id)">
+  {{ TodoTask.status ? 'Undo' : 'Complete' }}
+</button>
+<button class="btn btn-danger" (click)="DeleteTask(TodoTask.id)">Delete</button>
+</div>
